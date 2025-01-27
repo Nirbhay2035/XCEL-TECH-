@@ -1,0 +1,59 @@
+/* Default Styles */
+.nav-container {
+    max-width: 70vw;
+}
+
+/* Carousel Inner: Rounded corners */
+.carousel-inner {
+    border-radius: 15px;
+}
+
+/* Carousel Item: Max height */
+.carousel-item {
+    max-height: 550px;
+}
+
+/* For smaller screens (max-width: 991px) */
+@media (max-width: 991px) {
+    .nav-container {
+        max-width: 90vw; /* Adjust container width to 90% of viewport */
+    }
+
+    .carousel-item {
+        max-height: 450px; /* Adjust the height for smaller screens */
+    }
+
+    .carousel-inner {
+        border-radius: 10px; /* Slightly smaller border radius */
+    }
+}
+
+/* For even smaller screens (max-width: 576px) */
+@media (max-width: 576px) {
+    .nav-container {
+        max-width: 95vw; /* Take up almost full width on very small screens */
+    }
+
+    .carousel-item {
+        max-height: 350px; /* Reduce carousel item height even more */
+    }
+
+    .carousel-inner {
+        border-radius: 5px; /* Even smaller border radius for mobile screens */
+    }
+}
+
+/* For extremely small screens (max-width: 375px) */
+@media (max-width: 375px) {
+    .nav-container {
+        max-width: 100vw; /* Full width container on extremely small screens */
+    }
+
+    .carousel-item {
+        max-height: 300px; /* Further reduce height for very small screens */
+    }
+
+    .carousel-inner {
+        border-radius: 3px; /* Minimal border radius for the smallest screens */
+    }
+}

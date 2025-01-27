@@ -1,0 +1,216 @@
+.best-container {
+  display: flex;
+  align-items: center; /* Vertically center the content */
+  justify-content: space-between; /* Distribute space between circle and info */
+  height: 80vh;
+  width: auto;
+  padding: 0 20px;
+  background-color: #1b1b1b;
+  margin-top: 10px;
+}
+
+.circle {
+  background-image: url("https://img.freepik.com/premium-photo/family-married-couple-use-mobile-smartphone-found-out-great-big-win-good-news-celebrate-victory_191803-456.jpg?w=1060");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 50%; /* This makes it circular */
+  width: 550px; /* You can adjust the size */
+  height: 550px;
+  flex-shrink: 0; /* Prevent it from shrinking when space is tight */
+  margin-left: 10rem;
+}
+
+.info {
+  max-width: 500px; /* Control the width of the text */
+  margin-right: 55px; /* Adds some space between the circle and the info */
+}
+
+h1 {
+  font-size: 2rem;
+  color: #fff;
+}
+
+p {
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .best-container {
+    flex-direction: column; /* Stack the circle and info vertically */
+    align-items: center; /* Center the content horizontally */
+    height: auto; /* Allow the height to adjust */
+    padding: 20px; /* Add padding on smaller screens */
+  }
+
+  .circle {
+    width: 300px; /* Smaller circle on smaller screens */
+    height: 300px;
+    margin-left: 0; /* Remove left margin */
+    margin-bottom: 20px; /* Space between circle and info */
+  }
+
+  .info {
+    text-align: center; /* Center the text */
+    margin-right: 0; /* Remove right margin */
+  }
+
+  h1 {
+    font-size: 1.5rem; /* Adjust font size for smaller screens */
+  }
+
+  p {
+    font-size: 1rem; /* Adjust font size for smaller screens */
+  }
+}
+
+/* When the screen width is 480px or less (smaller mobile devices) */
+@media (max-width: 480px) {
+  .circle {
+    width: 250px; /* Even smaller circle */
+    height: 250px;
+  }
+
+  h1 {
+    font-size: 1.3rem; /* Even smaller font size */
+  }
+
+  p {
+    font-size: 0.9rem; /* Adjust for smaller screens */
+  }
+}
+
+/************** right **************/
+.info {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: auto;
+}
+
+.plan-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.location {
+  color: #3498db;
+}
+
+.plan-details {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.speed {
+  color: #3498db;
+  font-weight: bold;
+}
+
+.plan-includes {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.price-container {
+  margin-top: 20px;
+  font-size: 1.2rem;
+}
+
+.price-container em {
+  font-style: normal;
+  color: #888;
+}
+
+.price {
+  margin-top: 5px;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #e74c3c;
+}
+
+.price-value {
+  font-size: 2rem;
+  margin-right: 5px;
+}
+
+.validity {
+  font-size: 1rem;
+  color: #888;
+}
+
+.tax-info {
+  font-size: 0.9rem;
+  color: #888;
+  margin-top: 5px;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.buy-now,
+.more-plans {
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  text-align: center;
+  display: inline-block;
+}
+
+.buy-now:hover,
+.more-plans:hover {
+  background-color: #2980b9;
+  transition: background-color 0.3s;
+}
+
+.more-plans {
+  background-color: #f39c12;
+}
+
+.more-plans:hover {
+  background-color: #e67e22;
+}
+
+/* Responsiveness for smaller screens */
+@media (max-width: 768px) {
+  .info {
+    padding: 20px;
+  }
+
+  .plan-title {
+    font-size: 1.3rem;
+  }
+
+  .plan-details {
+    font-size: 1rem;
+  }
+
+  .price-container {
+    font-size: 1rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .buy-now,
+  .more-plans {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 12px;
+  }
+}

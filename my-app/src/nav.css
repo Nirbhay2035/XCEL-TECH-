@@ -1,0 +1,89 @@
+.navbar {
+    background-color: #0A0E11;
+    height: 5rem;
+}
+
+
+
+.login-button {
+    background-color: #0bd9a2;
+    font-weight: 500;
+    color: #fff;
+    font-size: 14px;
+    padding: 8px 15px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: 0.3s background-color;
+}
+
+.login-button:hover {
+    background-color: #00b383;
+}
+
+.navbar-toggler {
+    border: none;
+    font-size: 1.25rem;
+}
+
+.navbar-toggler:focus, .btn-close:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.nav-link {
+    color: #666777;    
+    font-weight: 500;
+    position: relative;
+    font-size: 20px;
+    transition: color 0.3s ease-in-out; /* Smooth color transition */
+}
+/* Underline Animation */
+.nav-item  ::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #00b383; /* Change underline color */
+    transition:  0.3s ease-in-out; /* Smooth transition */
+}
+
+/* Hover Effect */
+.nav-item :hover::after {
+    width: 100%;
+}
+
+/* On hover, change color to white */
+.nav-link:hover {
+    color: #ffffff;
+}
+.logo{
+    height: 35vh;
+    width: 100%;
+    margin-top: -10px;
+
+}
+
+/* Ensure the link stays white when active */
+.nav-link.active {
+    color: #fff !important;  /* Force the color to white when active */
+}
+
+/* Remove border color change when the nav link is clicked */
+.navbar-nav .nav-link:focus,
+.navbar-nav .nav-link:active {
+    color: #fff !important;  /* Keep the color white when clicked or focused */
+    border-color: transparent !important; /* Prevent the border color from changing */
+}
+
+/* For the hover effect, make sure it stays white */
+.nav-link:hover {
+    color: #fff !important;
+    background-color: transparent !important;  /* Prevent background color change */
+}
+
+/* Optionally: Control navbar background color when a link is clicked (optional) */
+.navbar.navbar-expand-lg.fixed-top .navbar-nav .nav-item.active {
+    background-color: transparent !important;  /* Keep background transparent */
+}
