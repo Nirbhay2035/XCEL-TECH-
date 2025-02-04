@@ -11,8 +11,9 @@ import Footer from './Components/Footer';
 import { BrowserRouter as Router, Routes, Route , useLocation } from 'react-router-dom';
 import BestSelling from './Components/BestSelling';
 import Cards from './Components/RecentBlogs';
-import XcelBroadBandPlans from './Components/XcelBroadBandPlans';
-
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+// import XcelBroadBandPlans from './Components/XcelBroadBandPlans';
 function App() {
     return (
       <Router>
@@ -21,14 +22,24 @@ function App() {
     );
   }
   
-  function Main() {
+  function App() {
     const location = useLocation(); // Get current route location
     
     // Determine if we are on the login page
     const isLoginPage = location.pathname === '/login';
-  
+    const [data, setData] = useState(null);
+    useEffect(() => {
+      axios.get("http://127.0.0.1:8000/api/test/")
+        .then((response) => {
+          setData(response.data.message); // ✅ Axios auto-parses JSON
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
+        });
+    }, []); //
     return (
       <>
+   
         <Nav />
         
         <div >
@@ -45,6 +56,7 @@ function App() {
             {/* {!isLoginPage && <XcelBroadBandPlans/>} */}
 
         {!isLoginPage && <Footer />}
+        <p>message{data}</p>
       </>
     );
   }
