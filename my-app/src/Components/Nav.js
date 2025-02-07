@@ -3,13 +3,30 @@
 import React from 'react';
 import link, { Link } from 'react-router-dom';
 
+import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
-function Nav() {
+const Nav = () => {
+    const [user, setUser] = useState(null);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+            setUser(JSON.parse(storedUser)); // ✅ Set user if found in local storage
+        }
+    }, []);
+    const handleLogout = () => {
+        localStorage.removeItem('user'); // ✅ Remove user from local storage
+        setUser(null); // ✅ Update state
+        navigate('/login'); // ✅ Redirect to login page
+    };
+
     return (
         <nav className="navbar navbar-expand-lg fixed-top border-bottom border-3 " >
             <div className="container-fluid pt-3 mx-2">
                 <a className="navbar-brand me-auto fw-bold" href="#">
-                    <img src="2.svg" alt="Logo" className='logo'/>
+                    <img src="2.svg" alt="Logo" className='logo' />
                     {/* <span className="logo-text">XCEL-TECH</span> */}
                 </a>
 
@@ -47,7 +64,13 @@ function Nav() {
 
                     </div>
                 </div>
-                <Link to='/login' className='login-button'>Login/Sign-up</Link>
+                <div className="nav-buttons">
+                    {user ? (
+                        <button className="logout-button" onClick={handleLogout}>Logout</button>
+                    ) : (
+                        <Link to='/login' className='login-button'>Login/Sign-up</Link>
+                    )}
+                </div>
                 {/* <a href='/' className='login-button'>Login/Signup</a> */}
                 <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
@@ -58,4 +81,4 @@ function Nav() {
     )
 }
 
-export default Nav
+export default Nav;

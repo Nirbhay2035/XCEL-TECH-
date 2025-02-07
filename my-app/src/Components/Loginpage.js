@@ -1,43 +1,54 @@
+import { useState } from 'react';
+import { Form, Button, Container, Card } from 'react-bootstrap';
+import { login } from '../endpoints/api';
+import { useNavigate } from 'react-router-dom';
 
-import React  from 'react';
+const LoginForm = () => {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
-export default function Loginpage(){
- 
-  return (
-    <>   
-      <div className="container login-container ">
-        <input type="checkbox" id="check" />
-        
-        <div className="login form">
-          <header>Login</header>
-          <form action="#">
-            <input type="email" placeholder="Enter your email" />
-            <input type="password" placeholder="Enter your password" />
-            <a href="#">Forgot password?</a>
-            <input type="button" className="button" value="Login" />
-          </form>
-          <div className="signup">
-            <span>Don't have an account? 
-              <label htmlFor="check">Signup</label>
-            </span>
-          </div>
-        </div>
-        
-        <div className="registration form">
-          <header>Signup</header>
-          <form action="#">
-            <input type="text" placeholder="Enter your email" />
-            <input type="password" placeholder="Create a password" />
-            <input type="password" placeholder="Confirm your password" />
-            <input type="button" className="button" value="Signup" />
-          </form>
-          <div className="signup">
-            <span>Already have an account? 
-              <label htmlFor="check">Login</label>
-            </span>
-          </div>
-        </div>
-      </div>
-    </>
-  );
+    const handelLogin = async () => {
+        const user = await login(username, password);
+        if (user) {
+            localStorage.setItem('user', JSON.stringify(user)); // ✅ Save user in local storage
+            navigate('/Banner'); // ✅ Redirect to home page (Banner)
+        } else {
+            alert('Invalid username or password');
+        }
+    };
+const handleNavigate =() => {
+  navigate('/register'); // Redirect to registration page (RegistrationForm)
 }
+    return (
+        <Container className="d-flex justify-content-center align-items-center vh-100">
+            <Card style={{ width: '400px', padding: '20px', borderRadius: '10px', boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)' }}>
+                <h2 className="text-center mb-4">Login</h2>
+                <Form>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Username</Form.Label>
+                        <Form.Control 
+                            type="text" 
+                            placeholder="Enter username" 
+                            value={username} 
+                            onChange={(e) => setUsername(e.target.value)} 
+                        />
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control 
+                            type="password" 
+                            placeholder="Enter password" 
+                            value={password} 
+                            onChange={(e) => setPassword(e.target.value)} 
+                        />
+                    </Form.Group>
+                    <Button variant="success" onClick={handelLogin} className="w-100">Login</Button>
+                    <a className='text-dark' onClick={handleNavigate}>Don't have an account? Signup</a>
+                </Form>
+            </Card>
+        </Container>
+    );
+};
+
+export default LoginForm;
